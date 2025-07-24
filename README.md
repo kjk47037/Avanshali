@@ -1,6 +1,6 @@
 # Avanshali - Charity Organization Website
 
-A modern, responsive website for a fictional charity organization built with React and Material UI.
+A modern, responsive website for an NGO built with React and Material UI.
 
 ## Features
 
