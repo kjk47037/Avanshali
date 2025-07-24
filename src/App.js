@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { ThemeProvider, CssBaseline, Box } from '@mui/material';
+import Header from './components/Header';
+import HeroSection from './components/HeroSection';
+import StatsSection from './components/StatsSection';
+import FeaturesSection from './components/FeaturesSection';
+import CallToAction from './components/CallToAction';
+import Footer from './components/Footer';
+import theme from './theme';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box sx={{ 
+        minHeight: '100vh',
+        bgcolor: 'background.default',
+        overflow: 'hidden',
+        position: 'relative',
+        width: '100%',
+        maxWidth: '100vw', // Prevent horizontal overflow
+      }}>
+        <Header />
+        <Box 
+          component="main"
+          sx={{ 
+            position: 'relative',
+            width: '100%'
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <HeroSection />
+          <StatsSection />
+          <FeaturesSection />
+          <CallToAction />
+        </Box>
+        <Footer />
+      </Box>
+    </ThemeProvider>
   );
 }
 
