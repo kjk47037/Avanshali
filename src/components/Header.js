@@ -72,6 +72,23 @@ const DesktopNavContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
+const ToolbarWrapper = styled(Toolbar)(({ theme }) => ({
+  justifyContent: 'space-between',
+  padding: 0,
+  position: 'relative',
+}));
+
+const CenterNavContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  position: 'absolute',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  [theme.breakpoints.down('md')]: {
+    display: 'none',
+  },
+}));
+
 const navItems = [
   { label: 'About Us', href: '#' },
   { label: 'Vision', href: '#' },
@@ -115,7 +132,7 @@ const Header = () => {
   return (
     <StyledAppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ justifyContent: 'space-between', padding: '0' }}>
+        <ToolbarWrapper disableGutters>
           <LogoText
             variant="h6"
             noWrap
@@ -136,15 +153,15 @@ const Header = () => {
             </IconButton>
           </MobileNavContainer>
           
-          <DesktopNavContainer>
-            <Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1, ml: { xs: 0, md: 8 } }}>
-              {navItems.map((item) => (
-                <NavButton key={item.label} href={item.href}>
-                  {item.label}
-                </NavButton>
-              ))}
-            </Box>
+          <CenterNavContainer>
+            {navItems.map((item) => (
+              <NavButton key={item.label} href={item.href}>
+                {item.label}
+              </NavButton>
+            ))}
+          </CenterNavContainer>
 
+          <DesktopNavContainer>
             <ContactButton 
               variant="outlined"
               color="primary"
@@ -152,7 +169,7 @@ const Header = () => {
               CONTACT
             </ContactButton>
           </DesktopNavContainer>
-        </Toolbar>
+        </ToolbarWrapper>
       </Container>
 
       <Drawer
